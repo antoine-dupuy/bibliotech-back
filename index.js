@@ -13,6 +13,8 @@ app.use(
   })
 );
 
+require('./routes')(app);
+
 // we check if the connection with the db is working
 connection.connect((err) => {
   if (err) {
