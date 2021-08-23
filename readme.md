@@ -1,3 +1,12 @@
 This is the backend side of my bibliotech project.
 
-Please checkout to the dev branch for more explanations.
+Next features will come soon :
+
+👉 get all blogs, get one blog, update and delete blog
+
+👉 server side user input validation with joi
+
+... and more.
+
+
+
