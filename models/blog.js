@@ -1,7 +1,5 @@
 const db = require('../db-config');
 
-let createdBlog = {};
-
 const create = async ({
   blog_title,
   blog_author,
@@ -27,4 +25,8 @@ const create = async ({
     );
 };
 
-module.exports = { create };
+const findAll = async () => {
+  return await db.promise().query('SELECT * FROM blogs');
+}
+
+module.exports = { create, findAll };
