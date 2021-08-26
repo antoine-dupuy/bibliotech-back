@@ -29,4 +29,8 @@ const findAll = async () => {
   return await db.promise().query('SELECT * FROM blogs');
 }
 
-module.exports = { create, findAll };
+const findOne = async (id) => {
+  return await db.promise().query('SELECT * FROM blogs WHERE id = ?', [id])
+}
+
+module.exports = { create, findAll, findOne };

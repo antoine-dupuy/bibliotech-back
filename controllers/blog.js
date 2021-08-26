@@ -1,4 +1,4 @@
-const { create, findAll } = require('../models/blog');
+const { create, findAll, findOne } = require('../models/blog');
 
 const createBlog = async (req, res) => {
   try {
@@ -20,8 +20,21 @@ const getBlogs = async (req, res) => {
   try {
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).send('Error getting blogs');
+    res.status(500).send('Error retrieving blog from database');
   }
 };
 
-module.exports = { createBlog, getBlogs };
+const getBlog = async (req, res) => {
+  const [data] = await findOne(req.params.id);
+  try {
+    if (data.length) {
+      res.json(data[0]);
+    } else {
+      res.status(404).send('Blog not found');
+    }
+  } catch (err) {
+    res.status(500).send('Error retrieving blog from database');
+  }
+};
+
+module.exports = { createBlog, getBlogs, getBlog };
