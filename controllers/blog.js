@@ -1,4 +1,4 @@
-const { create } = require('../models/blog');
+const { create, findAll } = require('../models/blog');
 
 const createBlog = async (req, res) => {
   try {
@@ -15,4 +15,13 @@ const createBlog = async (req, res) => {
   }
 };
 
-module.exports = { createBlog };
+const getBlogs = async (req, res) => {
+  const [data] = await findAll();
+  try {
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).send('Error getting blogs');
+  }
+};
+
+module.exports = { createBlog, getBlogs };
