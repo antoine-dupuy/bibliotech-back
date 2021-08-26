@@ -2,12 +2,16 @@ This is the backend side of my first personnal project. It will be a blog where 
 
 Next features are comming soon :
 
-👉 get, update and delete one blog
+👉 update and delete blog;
 
-👉 server side user input validation with joi
+👉 CRUD for users;
 
-👉 user authentification with jwt
+👉 server side user input validation with joi;
 
-👉 security management with helmet
+👉 user authentification with jwt;
+
+👉 security management with helmet;
+
+👉 TDD;
 
 ... and more.
