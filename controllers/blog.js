@@ -1,4 +1,4 @@
-const { create, findAll, findOne } = require('../models/blog');
+const { create, findAll, findOne, setBlog } = require('../models/blog');
 
 const createBlog = async (req, res) => {
   try {
@@ -16,8 +16,8 @@ const createBlog = async (req, res) => {
 };
 
 const getBlogs = async (req, res) => {
-  const [data] = await findAll();
   try {
+    const [data] = await findAll();
     res.status(200).json(data);
   } catch (err) {
     res.status(500).send('Error retrieving blog from database');
@@ -25,8 +25,8 @@ const getBlogs = async (req, res) => {
 };
 
 const getBlog = async (req, res) => {
-  const [data] = await findOne(req.params.id);
   try {
+    const [data] = await findOne(req.params.id);
     if (data.length) {
       res.json(data[0]);
     } else {
@@ -37,4 +37,19 @@ const getBlog = async (req, res) => {
   }
 };
 
-module.exports = { createBlog, getBlogs, getBlog };
+//update
+//improve the error management logic (with findOne model to check if it exists)
+//sendback the updated blog to the user
+
+const updateBlog = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const body = req.body;
+    await setBlog(id, body);
+    res.status(200).send('Blog updated');
+  } catch (err) {
+    res.status(500).send('Error updating blog');
+  }
+};
+
+module.exports = { createBlog, getBlogs, getBlog, updateBlog };
