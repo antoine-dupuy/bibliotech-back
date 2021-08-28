@@ -2,7 +2,7 @@ This is the backend side of my first personnal project. It will be a blog where 
 
 Next features are comming soon :
 
-👉 update and delete blog;
+👉 delete blog;
 
 👉 CRUD for users;
 

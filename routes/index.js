@@ -1,5 +1,5 @@
-const blogsRouter = require("./blog");
+const blogsRouter = require('./blog');
 
 module.exports = (app) => {
-    app.use("/api/blogs", blogsRouter)
+  app.use('/api/blogs', blogsRouter);
 };
