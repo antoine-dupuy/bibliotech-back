@@ -2,9 +2,7 @@ This is the backend side of my first personnal project. It will be a blog where 
 
 Next features are comming soon :
 
-👉 delete blog;
-
-👉 CRUD for users;
+👉 CRUD for users, likes, favorites and comments;
 
 👉 server side user input validation with joi;
 
