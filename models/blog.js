@@ -50,4 +50,8 @@ const setBlog = async (id, body) => {
     );
 };
 
-module.exports = { create, findAll, findOne, setBlog };
+const _delete = async (id) => {
+  return db.promise().query('DELETE FROM blogs WHERE id = ?', id);
+};
+
+module.exports = { create, findAll, findOne, setBlog, _delete };

@@ -1,4 +1,10 @@
-const { create, findAll, findOne, setBlog } = require('../models/blog');
+const {
+  create,
+  findAll,
+  findOne,
+  setBlog,
+  _delete,
+} = require('../models/blog');
 
 const createBlog = async (req, res) => {
   try {
@@ -52,4 +58,13 @@ const updateBlog = async (req, res) => {
   }
 };
 
-module.exports = { createBlog, getBlogs, getBlog, updateBlog };
+const deleteBlog = async (req, res) => {
+  try {
+    await _delete(req.params.id);
+    res.status(200).send('Blog deleted');
+  } catch (err) {
+    res.status(500).send('Error deleting blog');
+  }
+};
+
+module.exports = { createBlog, getBlogs, getBlog, updateBlog, deleteBlog };
