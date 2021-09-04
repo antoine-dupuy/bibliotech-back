@@ -43,18 +43,20 @@ const getBlog = async (req, res) => {
   }
 };
 
-//update
-//improve the error management logic (with findOne model to check if it exists)
-//sendback the updated blog to the user
-
 const updateBlog = async (req, res) => {
   try {
-    const id = req.params.id;
-    const body = req.body;
-    await setBlog(id, body);
-    res.status(200).send('Blog updated');
+    const [data] = await findOne(req.params.id);
+    if (data.length === 0) {
+      throw new Error('BLOG_NOT_FOUND');
+    }
+    await setBlog(req.params.id, req.body);
+    res.status(200).json({ ...[data][0], ...req.body });
   } catch (err) {
-    res.status(500).send('Error updating blog');
+    if (err.message === 'BLOG_NOT_FOUND') {
+      res.status(404).send(`Blog with id ${req.params.id} not found`);
+    } else {
+      res.status(500).send('Error updating blog');
+    }
   }
 };
 
