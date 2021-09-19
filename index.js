@@ -1,6 +1,7 @@
 const connection = require('./db-config');
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const app = express();
 
 const port = process.env.PORT || 8080;
@@ -12,6 +13,7 @@ app.use(
     origin: ['http://localhost:3000', 'http://localhost:3030'],
   })
 );
+app.use(helmet());
 
 require('./routes')(app);
 
